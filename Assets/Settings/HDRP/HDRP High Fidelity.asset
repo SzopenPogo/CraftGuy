@@ -95,7 +95,7 @@ MonoBehaviour:
       maxShadowRequests: 128
       directionalShadowsDepthBits: 16
       shadowFilteringQuality: 2
-      areaShadowFilteringQuality: 0
+      areaShadowFilteringQuality: 1
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 16
