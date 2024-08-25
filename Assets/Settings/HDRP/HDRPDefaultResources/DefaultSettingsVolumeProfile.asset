@@ -85,8 +85,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   length:
-    m_OverrideState: 0
-    m_Value: 0.15
+    m_OverrideState: 1
+    m_Value: 0.296
   opacity:
     m_OverrideState: 0
     m_Value: 1
