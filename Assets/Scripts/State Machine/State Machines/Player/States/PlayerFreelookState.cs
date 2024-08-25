@@ -51,7 +51,7 @@ public class PlayerFreelookState : PlayerBaseState
 
     private void HandleTimeInNoMove(float deltaTime)
     {
-        if (IsMoving())
+        if (IsInputMoving())
         {
             SetTimeInNoMove(timeInNoMove -= deltaTime);
             return;
@@ -70,18 +70,23 @@ public class PlayerFreelookState : PlayerBaseState
 
     private void HandleAnimatorMoveSpeed(float deltaTime)
     {
-        if(!IsMoving() && timeInNoMove < StateMachine.MovementValues.TimeInNoInputActionToStopMove)
+        if(!IsInputMoving() && timeInNoMove < StateMachine.MovementValues.TimeInNoInputActionToStopMove)
             return;
 
-        float animatorMoveSpeedTarget = IsMoving() ? MaxAnimatorMoveSpeed : MinAnimatorMoveSpeed;
+        float animatorMoveSpeedTarget = IsInputMoving() ? MaxAnimatorMoveSpeed : MinAnimatorMoveSpeed;
 
         SetAnimatorFloat(AnimatorMoveSpeedVariable, animatorMoveSpeedTarget,
             StateMachine.MovementValues.AnimatorMoveSpeedBlendTime, deltaTime);
     }
 
+    private bool IsNotMoving()
+    {
+        return !IsInputMoving() && timeInNoMove > StateMachine.MovementValues.TimeInNoInputActionToStopMove;
+    }
+
     private void HandleMovement(float deltaTime)
     {
-        if (!IsMoving() && timeInNoMove > StateMachine.MovementValues.TimeInNoInputActionToStopMove)
+        if (IsNotMoving())
             return;
 
         currentMovementInput = GetMovementInput(currentMovementInput, StateMachine.MovementValues.SmoothMovementInput);

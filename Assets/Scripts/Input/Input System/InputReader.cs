@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
-    public static InputReader Instance;
+    public static InputReader Instance { get; private set; }
 
     private Controls controls;
 

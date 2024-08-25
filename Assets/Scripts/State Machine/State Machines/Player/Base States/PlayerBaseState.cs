@@ -9,7 +9,7 @@ public abstract class PlayerBaseState : BaseState<PlayerStateMachine>
     private const float MinMoveSpeed = 0f;
 
     #region Movement
-    protected bool IsMoving()
+    protected bool IsInputMoving()
     {
         return InputReader.Instance.MovementValue != Vector2.zero;
     }
