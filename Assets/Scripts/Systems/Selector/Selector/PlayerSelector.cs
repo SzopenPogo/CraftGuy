@@ -11,7 +11,6 @@ public class PlayerSelector : Selector
     [SerializeField] private LayerMask ignoredLayersMasks;
 
     private RaycastHit hittedObject;
-    private bool isObjectHitted;
 
     private void FixedUpdate()
     {
@@ -27,11 +26,9 @@ public class PlayerSelector : Selector
             out hittedObject, transform.rotation, boxCastDistance, ~ignoredLayersMasks))
         {
             HandleSelectDeselect();
-            isObjectHitted = true;
             return;
         }
 
-        isObjectHitted = false;
         Deselect();
     }
 
