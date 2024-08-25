@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public abstract class StateMachine : MonoBehaviour
 {
     [field: Header("Base Components")]
     [field: SerializeField] public Animator Animator { get; private set; }
@@ -8,6 +8,13 @@ public class StateMachine : MonoBehaviour
 
     private State currentState;
 
+    private void Start()
+    {
+        if (!CheckIsComponents())
+            return;
+
+        ApplyStart();
+    }
     private void Update()
     {
         currentState?.Tick();
@@ -18,6 +25,7 @@ public class StateMachine : MonoBehaviour
         currentState?.FixedTick();
     }
 
+    #region State Managment
     public void SwitchState(State newState)
     {
         if (newState == null)
@@ -28,6 +36,28 @@ public class StateMachine : MonoBehaviour
         currentState?.Enter();
     }
 
+    protected abstract void ApplyStart();
+    #endregion
+
+    #region Tools
     public float GetDeltaTime() =>
         Time.deltaTime;
+    #endregion
+
+    #region Component Check
+    protected bool CheckIsComponent(Object component, string componentName)
+    {
+        if (component != null)
+            return true;
+
+        Debug.LogError($"[{nameof(StateMachine)}] {RootTransform.gameObject.name}: {componentName} not assigned!");
+
+        return false;
+    }
+
+    protected virtual bool CheckIsComponents()
+    {
+        return true;
+    }
+    #endregion
 }

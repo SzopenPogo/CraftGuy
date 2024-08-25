@@ -7,6 +7,9 @@ public class PlayerFreelookState : PlayerBaseState
 
     private const float CrossFadeDuration = .25f;
 
+    private Vector2 currentMovementInput;
+    private Vector3 movement;
+
     public PlayerFreelookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -23,6 +26,15 @@ public class PlayerFreelookState : PlayerBaseState
 
     public override void Tick()
     {
-        Debug.Log("Freelook State");
+        float deltaTime = StateMachine.GetDeltaTime();
+
+        if (!IsMoving())
+            return;
+
+        currentMovementInput = GetMovementInput(currentMovementInput, StateMachine.MovementValues.SmoothMovementInput);
+        movement = GetCameraMovement(currentMovementInput);
+
+        Move(StateMachine.RootTransform.forward, StateMachine.MovementValues.MovementSpeed, deltaTime);
+        FaceMovementDirection(movement, StateMachine.MovementValues.RotationSpeed);
     }
 }
