@@ -50,6 +50,17 @@ public abstract class BaseState<T> : State where T : StateMachine
     #endregion
 
     #region Animator Values
+    protected bool IsAnimationPlaying(string animationName)
+    {
+        return IsAnimationPlaying(animationName, MainAnimatorLayerIndex);
+    }
+
+    protected bool IsAnimationPlaying(string animationName, int layerIndex)
+    {
+        return StateMachine.Animator.GetCurrentAnimatorStateInfo(layerIndex).IsName(animationName)
+            || StateMachine.Animator.GetNextAnimatorStateInfo(layerIndex).IsName(animationName);
+    }
+
     protected void SetAnimatorFloat(int animatorVariable, float value, float blendDampTime, float deltaTime)
     {
         StateMachine.Animator.SetFloat(animatorVariable, value, blendDampTime, deltaTime);

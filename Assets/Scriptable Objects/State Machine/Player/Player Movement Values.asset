@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3110f198b94c9054d8adf01779981190, type: 3}
   m_Name: Player Movement Values
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 3.5
+  <MovementSpeed>k__BackingField: 2.5
   <RotationSpeed>k__BackingField: 5
   <SmoothMovementInput>k__BackingField: 0.4
+  <AnimatorMoveSpeedBlendTime>k__BackingField: 0.12
+  <TimeInNoInputActionToStopMove>k__BackingField: 0.25
