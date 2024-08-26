@@ -436,6 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRoot: {fileID: 261985885}
   uiDocument: {fileID: 261985887}
+  <InventorySlotTemplate>k__BackingField: {fileID: 9197481963319205126, guid: a28be1f6f7816604eafa83f50917888c,
+    type: 3}
 --- !u!1 &335335114
 GameObject:
   m_ObjectHideFlags: 0

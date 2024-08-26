@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     [SerializeField] private string itemName;
+    [field: SerializeField] public Sprite ItemIcon { get; private set; }
 
     public string GetItemName()
     {
