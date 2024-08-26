@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Slot-Item" class="slot-item" style="flex-grow: 1;">
+        <ui:VisualElement name="Slot-Item-Data" class="slot-item-data">
+            <ui:VisualElement name="Slot-Item-Data__Icon" class="slot-item-data__icon" />
+            <ui:Label tabindex="-1" text="Iron Bar" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Slot-Item-Data__Title" class="slot-item-data__title" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Slot-Item-Buttons" class="slot-item-buttons">
+            <ui:Button text="Craft" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Slot-Item-Buttons__Craft" class="slot-item-buttons__button slot-item-buttons__button--craft" />
+            <ui:Button text="Drop" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Slot-Item-Button__Drop" class="slot-item-buttons__button slot-item-buttons__button--drop" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

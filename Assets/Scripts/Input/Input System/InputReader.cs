@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     #region Values
     public Vector2 MovementValue { get; private set; }
     public Vector2 MouseMoveValue { get; private set; }
+    #endregion
+
+    #region Actions
+    public event Action OnInventoryKeyDown;
     #endregion
 
     private void Awake()
@@ -38,5 +43,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnMouseMove(InputAction.CallbackContext context)
     {
         MouseMoveValue = context.ReadValue<Vector2>();
+    }
+
+    public void OnInventoryKey(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnInventoryKeyDown?.Invoke();
     }
 }

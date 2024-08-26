@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/User%20Interface/Ui%20Toolkit/Inventory%20Ui/Style/inventory-style.uss?fileID=7433441132597879392&amp;guid=a135fe640e19f884bb5844a6f4db514a&amp;type=3#inventory-style" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:VisualElement name="Header" class="header">
+            <ui:VisualElement name="Header-Icon-Container" class="header-icon-container">
+                <ui:VisualElement name="Header-Icon" class="header-icon" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Inventory" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Header-Title" class="header-title" />
+            <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Header-Close-Button" class="header-close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Slots-Container" class="slots-container">
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Slots" class="slots unity-scroller__slider" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
