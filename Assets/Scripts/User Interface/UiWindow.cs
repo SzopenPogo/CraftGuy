@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public abstract class UiWindow : MonoBehaviour
 {
-    public bool IsShowWindow;
+    public event Action<UiWindow> OnWindowHide;
+
+    public bool IsShowWindow {  get; private set; }
 
     [SerializeField] private GameObject windowRoot;
 
@@ -29,5 +32,7 @@ public abstract class UiWindow : MonoBehaviour
         windowRoot.SetActive(false);
 
         IsShowWindow = false;
+
+        OnWindowHide?.Invoke(this);
     }
 }

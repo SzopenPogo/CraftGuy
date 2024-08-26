@@ -13,9 +13,30 @@ public class CursorController : MonoBehaviour
     {
         HideCursor();
         LockCursor();
+
+        UserInterfaceManager.Instance.OnFirstWindowOpen += EnableCursor;
+        UserInterfaceManager.Instance.OnLastWindowClose += DisableCursor;
     }
 
-    public void HideCursor()
+    private void OnDestroy()
+    {
+        UserInterfaceManager.Instance.OnFirstWindowOpen -= EnableCursor;
+        UserInterfaceManager.Instance.OnLastWindowClose -= DisableCursor;
+    }
+
+    private void EnableCursor()
+    {
+        ShowCursor();
+        UnlockCursor();
+    }
+
+    private void DisableCursor()
+    {
+        HideCursor();
+        LockCursor();
+    }
+
+    private void HideCursor()
     {
         if(!Cursor.visible)
             return;
@@ -23,7 +44,7 @@ public class CursorController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void ShowCursor()
+    private void ShowCursor()
     {
         if (Cursor.visible)
             return;
@@ -31,7 +52,7 @@ public class CursorController : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void LockCursor()
+    private void LockCursor()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
             return;
@@ -39,7 +60,7 @@ public class CursorController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void UnlockCursor()
+    private void UnlockCursor()
     {
         if (Cursor.lockState == CursorLockMode.None)
             return;
