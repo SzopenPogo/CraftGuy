@@ -24,11 +24,12 @@ public class PlayerFreelookState : PlayerBaseState
     public override void Enter()
     {
         InitializeEnterAnimation();
+        HandleInteractionInEnter();
     }
 
     public override void Exit()
     {
-
+        HandleInteractionInExit();
     }
 
     public override void Tick()
@@ -104,6 +105,23 @@ public class PlayerFreelookState : PlayerBaseState
     private float GetRotationSpeed()
     {
         return StateMachine.MovementValues.RotationSpeed * GetAnimatorFloat(AnimatorMoveSpeedVariable);
+    }
+    #endregion
+
+    #region Interaction
+    private void HandleInteractionInEnter()
+    {
+        StateMachine.InteractionManager.OnInteractionInitialized += StartInteraction;
+    }
+
+    private void HandleInteractionInExit()
+    {
+        StateMachine.InteractionManager.OnInteractionInitialized -= StartInteraction;
+    }
+
+    private void StartInteraction(Interactable interactable)
+    {
+        OnStartInteraction(interactable);
     }
     #endregion
 }

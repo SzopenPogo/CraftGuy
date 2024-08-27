@@ -63,5 +63,15 @@ public abstract class PlayerBaseState : BaseState<PlayerStateMachine>
     {
         StateMachine.SwitchState(new PlayerFreelookState(StateMachine));
     }
+
+    public void OnStartInteraction(Interactable interactable)
+    {
+        StateMachine.SwitchState(new PlayerStartInteractionState(StateMachine, interactable));
+    }
+
+    public void OnPickup(Interactable interactable)
+    {
+        StateMachine.SwitchState(new PlayerPickupState(StateMachine, interactable));
+    }
     #endregion
 }

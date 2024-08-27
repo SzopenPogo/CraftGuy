@@ -9,6 +9,10 @@ public class PlayerStateMachine : StateMachine
     [field: Header("Physics")]
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
 
+    [field: Header("Components")]
+    [field: SerializeField] public InteractionManager InteractionManager { get; private set; }
+    [field: SerializeField] public Inventory Inventory { get; private set; }
+
     [field: Header("Values")]
     [field: SerializeField] public MovementValues MovementValues { get; private set; }
 

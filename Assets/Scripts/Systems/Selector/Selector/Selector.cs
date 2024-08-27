@@ -9,6 +9,17 @@ public abstract class Selector : MonoBehaviour
     public ISelectable SelectedSelectable { get; private set; }
     public bool IsSelectorActive { get; private set; } = true;
 
+    public bool IsSomethingSelected()
+    {
+        if (!IsSelectorActive)
+            return false;
+
+        if (SelectedSelectable == null)
+            return false;
+
+        return true;
+    }
+
     public void EnableSelector()
     {
         IsSelectorActive = true;

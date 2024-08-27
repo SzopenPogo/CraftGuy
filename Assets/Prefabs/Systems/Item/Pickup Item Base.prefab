@@ -536,6 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8e33baecee3764ebe5b7e82098dc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Interaction>k__BackingField: {fileID: 11400000, guid: 51930ab216429e74b96d190380330658,
+    type: 2}
   <ItemData>k__BackingField: {fileID: 11400000, guid: 60401be0546db9b4b9a83fb0309d5844,
     type: 2}
 --- !u!1 &8473201646667283592

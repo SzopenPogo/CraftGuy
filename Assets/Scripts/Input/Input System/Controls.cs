@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractionKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""5acd8fc7-e4b8-464f-9cff-2bf84f02e94e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""InventoryKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e75fe59-8717-4dbc-ac62-e148f2faf6b1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractionKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,6 +180,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_MouseMove = m_Player.FindAction("MouseMove", throwIfNotFound: true);
         m_Player_InventoryKey = m_Player.FindAction("InventoryKey", throwIfNotFound: true);
+        m_Player_InteractionKey = m_Player.FindAction("InteractionKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +245,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_MouseMove;
     private readonly InputAction m_Player_InventoryKey;
+    private readonly InputAction m_Player_InteractionKey;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -231,6 +253,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @MouseMove => m_Wrapper.m_Player_MouseMove;
         public InputAction @InventoryKey => m_Wrapper.m_Player_InventoryKey;
+        public InputAction @InteractionKey => m_Wrapper.m_Player_InteractionKey;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +272,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @InventoryKey.started += instance.OnInventoryKey;
             @InventoryKey.performed += instance.OnInventoryKey;
             @InventoryKey.canceled += instance.OnInventoryKey;
+            @InteractionKey.started += instance.OnInteractionKey;
+            @InteractionKey.performed += instance.OnInteractionKey;
+            @InteractionKey.canceled += instance.OnInteractionKey;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -262,6 +288,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @InventoryKey.started -= instance.OnInventoryKey;
             @InventoryKey.performed -= instance.OnInventoryKey;
             @InventoryKey.canceled -= instance.OnInventoryKey;
+            @InteractionKey.started -= instance.OnInteractionKey;
+            @InteractionKey.performed -= instance.OnInteractionKey;
+            @InteractionKey.canceled -= instance.OnInteractionKey;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -293,5 +322,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnMouseMove(InputAction.CallbackContext context);
         void OnInventoryKey(InputAction.CallbackContext context);
+        void OnInteractionKey(InputAction.CallbackContext context);
     }
 }

@@ -15,6 +15,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     #region Actions
     public event Action OnInventoryKeyDown;
+    public event Action OnInteractionKeyDown;
     #endregion
 
     private void Awake()
@@ -51,5 +52,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             return;
 
         OnInventoryKeyDown?.Invoke();
+    }
+
+    public void OnInteractionKey(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnInteractionKeyDown?.Invoke();
     }
 }

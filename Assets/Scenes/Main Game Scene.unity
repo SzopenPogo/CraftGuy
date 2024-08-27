@@ -1299,6 +1299,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287789783111112789, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
+      propertyPath: <Inventory>k__BackingField
+      value: 
+      objectReference: {fileID: 1019357548}
+    - target: {fileID: 2287789783111112789, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
       propertyPath: <MainCamera>k__BackingField
       value: 
       objectReference: {fileID: 1823688466}

@@ -21,15 +21,6 @@ public class PlayerInventory : Inventory
         InputReader.Instance.OnInventoryKeyDown -= ToggleInventory;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            AddItem(testItem);
-            Debug.Log("ITEM ADDED");
-        }
-    }
-
     private void ToggleInventory()
     {
         if(IsInventoryOpen)
