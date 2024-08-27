@@ -8,15 +8,17 @@ public class UiInventorySlots
 
     private List<UiInventorySlot> renderedSlots = new();
 
-    private VisualElement slotsContainer;
+    private ScrollView slotsContainer;
 
     public UiInventorySlots(UiInventoryController inventoryController)
     {
         this.inventoryController = inventoryController;
 
-        slotsContainer = inventoryController.Root.Q<VisualElement>("Slots");
+        slotsContainer = inventoryController.Root.Q<ScrollView>("Slots");
 
         RenderSlots();
+
+        slotsContainer.RegisterCallback<WheelEvent>(EnableSlotsWindowScroll);
 
         inventoryController.AssignedInventory.OnInventoryChange += RenderSlots;
         inventoryController.OnInventoryControllerDisable += HandleInventoryControllerDisable;
@@ -24,6 +26,8 @@ public class UiInventorySlots
 
     private void HandleInventoryControllerDisable()
     {
+        slotsContainer.UnregisterCallback<WheelEvent>(EnableSlotsWindowScroll);
+
         inventoryController.AssignedInventory.OnInventoryChange -= RenderSlots;
         inventoryController.OnInventoryControllerDisable -= HandleInventoryControllerDisable;
     }
@@ -37,5 +41,10 @@ public class UiInventorySlots
             UiInventorySlot slot = new(inventoryController, slotsContainer, item);
             renderedSlots.Add(slot);
         }
+    }
+
+    private void EnableSlotsWindowScroll(WheelEvent e)
+    {
+        UiToolkitScrollHandler.Instance.OnScroll(e, slotsContainer);
     }
 }

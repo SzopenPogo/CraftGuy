@@ -4,8 +4,8 @@ public class PickupItemInteractable : Interactable
 {
     [field: SerializeField] public ItemData ItemData { get; private set; }
 
-    private void Start()
+    public void Pickup()
     {
-        Interaction.Initialize(transform);
+        Destroy(gameObject);
     }
 }

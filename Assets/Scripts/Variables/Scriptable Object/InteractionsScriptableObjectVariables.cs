@@ -1,5 +1,5 @@
 public class InteractionsScriptableObjectVariables : ScriptableObjectVariable
 {
-    public const string PickupInteractionFileName = "Pickup Interaction";
-    public const string PickupInteractionMenuName = InteractionsMenuName + "/" + PickupInteractionFileName;
+    public const string InteractionFileName = "Interaction";
+    public const string InteractionMenuName = InteractionsMenuName + "/" + InteractionFileName;
 }

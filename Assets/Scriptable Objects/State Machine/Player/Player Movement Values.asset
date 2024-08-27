@@ -15,5 +15,5 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 2.2
   <RotationSpeed>k__BackingField: 5
   <SmoothMovementInput>k__BackingField: 0.4
-  <AnimatorMoveSpeedBlendTime>k__BackingField: 0.1
+  <AnimatorMoveSpeedBlendTime>k__BackingField: 0.08
   <TimeInNoInputActionToStopMove>k__BackingField: 0.25

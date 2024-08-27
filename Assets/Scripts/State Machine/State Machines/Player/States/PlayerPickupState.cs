@@ -31,8 +31,9 @@ public class PlayerPickupState : PlayerBaseState
 
         if(!isItemPickedUp && normalizedTime >= StateMachine.PickupValues.PickupItemNormalizedTime)
         {
-            if (PickupInteractable.Interaction.TryInteract())
-                StateMachine.Inventory.AddItem(PickupInteractable.ItemData);
+
+            StateMachine.Inventory.AddItem(PickupInteractable.ItemData);
+            PickupInteractable.Pickup();
 
             isItemPickedUp = true;
         }

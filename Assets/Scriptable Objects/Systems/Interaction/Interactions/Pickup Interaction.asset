@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d49e6255a126af4c8f55f8893d8d42e, type: 3}
+  m_Script: {fileID: 11500000, guid: a44d75f53e1d3cd4db9cc473e6903a3c, type: 3}
   m_Name: Pickup Interaction
   m_EditorClassIdentifier: 
-  interactionTitle: Pickup Item
+  interactionTitle: Pickup
   <InteractionType>k__BackingField: 0
