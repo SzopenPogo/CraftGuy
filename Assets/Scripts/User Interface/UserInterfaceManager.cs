@@ -20,26 +20,15 @@ public class UserInterfaceManager : MonoBehaviour
 
     private void Start()
     {
-        InputReader.Instance.OnInventoryKeyDown += ToggleInventoryWindow;
+        InitializeInventoryUi();
     }
 
     private void OnDestroy()
     {
-        InputReader.Instance.OnInventoryKeyDown -= ToggleInventoryWindow;
+        DeinitializeInventoryUi();
     }
 
-    private void ToggleInventoryWindow()
-    {
-        ToggleWindow(inventoryController);
-    }
-
-    private void ToggleWindow(UiWindow window)
-    {
-        TryOpenWindow(window);
-
-        window.ToggleWindow();
-    }
-
+    #region Open / Close window
     private bool TryOpenWindow(UiWindow window)
     {
         if (openWindows.Contains(window))
@@ -50,21 +39,49 @@ public class UserInterfaceManager : MonoBehaviour
         if (openWindows.Count == 1)
             OnFirstWindowOpen?.Invoke();
 
-        window.OnWindowHide += CloseWindow;
+        window.ShowWindow();
 
         return true;
     }
 
-    private void CloseWindow(UiWindow window)
+    private bool TryCloseWindow(UiWindow window)
     {
         if (!openWindows.Contains(window))
-            return;
+            return false;
 
         openWindows.Remove(window);
 
         if (openWindows.Count <= 0)
             OnLastWindowClose?.Invoke();
 
-        window.OnWindowHide -= CloseWindow;
+        window.HideWindow();
+
+        return true;
     }
+
+    #endregion
+
+    #region Inventory Ui
+    private void InitializeInventoryUi()
+    {
+        PlayerInventory.Instance.OnInventoryOpen += ShowInventoryUi;
+        PlayerInventory.Instance.OnInventoryClose += HideInventoryUi;
+    }
+
+    private void DeinitializeInventoryUi()
+    {
+        PlayerInventory.Instance.OnInventoryOpen -= ShowInventoryUi;
+        PlayerInventory.Instance.OnInventoryClose -= HideInventoryUi;
+    }
+
+    private void ShowInventoryUi()
+    {
+        TryOpenWindow(inventoryController);
+    }
+
+    private void HideInventoryUi()
+    {
+        TryCloseWindow(inventoryController);
+    }
+    #endregion
 }

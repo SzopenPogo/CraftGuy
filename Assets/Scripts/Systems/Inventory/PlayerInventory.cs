@@ -11,6 +11,16 @@ public class PlayerInventory : Inventory
         Instance = this;
     }
 
+    private void Start()
+    {
+        InputReader.Instance.OnInventoryKeyDown += ToggleInventory;
+    }
+
+    private void OnDestroy()
+    {
+        InputReader.Instance.OnInventoryKeyDown -= ToggleInventory;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -18,5 +28,16 @@ public class PlayerInventory : Inventory
             AddItem(testItem);
             Debug.Log("ITEM ADDED");
         }
+    }
+
+    private void ToggleInventory()
+    {
+        if(IsInventoryOpen)
+        {
+            CloseInventory();
+            return;
+        }
+
+        OpenInventory();
     }
 }

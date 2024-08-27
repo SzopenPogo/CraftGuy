@@ -9,17 +9,6 @@ public abstract class UiWindow : MonoBehaviour
 
     [SerializeField] private GameObject windowRoot;
 
-    public void ToggleWindow()
-    {
-        if (IsShowWindow)
-        {
-            HideWindow();
-            return;
-        }
-
-        ShowWindow();
-    }
-
     public virtual void ShowWindow()
     {
         windowRoot.SetActive(true);

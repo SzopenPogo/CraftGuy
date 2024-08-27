@@ -24,6 +24,6 @@ public class UiInventoryCloseButton
 
     private void CloseButtonClick(ClickEvent e)
     {
-        inventoryController.HideWindow();
+        inventoryController.DispatchCloseButtonClick();
     }
 }
