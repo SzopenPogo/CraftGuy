@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickupItemController : Interactable
+public class PickupItemInteractable : Interactable
 {
     [field: SerializeField] public ItemData ItemData { get; private set; }
 

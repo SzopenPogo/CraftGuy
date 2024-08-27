@@ -2,25 +2,22 @@ using UnityEngine;
 
 public class PlayerPickupState : PlayerBaseState
 {
-    private readonly Interactable Interactable;
-    private PickupItemController itemController;
+    private const string PickupAnimationName = "Pickup";
+    private const string PickupAnimationTag = "Pickup";
+    private const float CrossFadeDuration = .2f;
+
+    private readonly PickupItemInteractable PickupInteractable;
 
     private bool isItemPickedUp;
 
-    public PlayerPickupState(PlayerStateMachine stateMachine, Interactable interactable) : base(stateMachine)
+    public PlayerPickupState(PlayerStateMachine stateMachine, PickupItemInteractable interactable) : base(stateMachine)
     {
-        Interactable = interactable;
+        PickupInteractable = interactable;
     }
 
     public override void Enter()
-    { 
-        if(Interactable is not PickupItemController)
-        {
-            OnFreelook();
-            return;
-        }
-
-        itemController = Interactable as PickupItemController;
+    {
+        SetAnimation(PickupAnimationName, CrossFadeDuration);
     }
 
     public override void Exit()
@@ -30,15 +27,20 @@ public class PlayerPickupState : PlayerBaseState
 
     public override void Tick()
     {
-        if (isItemPickedUp)
+        float normalizedTime = GetNormalizedTime(PickupAnimationTag);
+
+        if(!isItemPickedUp && normalizedTime >= StateMachine.PickupValues.PickupItemNormalizedTime)
+        {
+            if (PickupInteractable.Interaction.TryInteract())
+                StateMachine.Inventory.AddItem(PickupInteractable.ItemData);
+
+            isItemPickedUp = true;
+        }
+
+        if(normalizedTime >= StateMachine.PickupValues.ExitStateNormalizedTime)
         {
             OnFreelook();
             return;
         }
-
-        StateMachine.Inventory.AddItem(itemController.ItemData);
-        itemController.Interaction.TryInteract();
-
-        isItemPickedUp = true;
     }
 }

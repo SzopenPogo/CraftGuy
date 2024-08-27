@@ -12,7 +12,7 @@ public class PlayerStartInteractionState : PlayerBaseState
 
     public override void Enter()
     {
-        SetInteractionState(Interactable.Interaction);
+        SetInteractionState();
     }
 
     public override void Exit()
@@ -23,14 +23,23 @@ public class PlayerStartInteractionState : PlayerBaseState
     {
     }
 
-    private void SetInteractionState(Interaction interaction)
+    private void SetInteractionState()
     {
-        if(interaction.InteractionType == InteractionType.Pickup)
-        {
-            OnPickup(Interactable);
+        if (TryStartPickupInteraction())
             return;
-        }
 
         OnFreelook();
+    }
+
+    private bool TryStartPickupInteraction()
+    {
+        if (Interactable.Interaction.InteractionType != InteractionType.Pickup)
+            return false;
+
+        if (Interactable is not PickupItemInteractable)
+            return false;
+
+        OnPickup(Interactable as PickupItemInteractable);
+        return true;
     }
 }

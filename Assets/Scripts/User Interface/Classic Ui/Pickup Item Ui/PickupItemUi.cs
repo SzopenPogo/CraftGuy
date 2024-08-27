@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PickupItemUi : MonoBehaviour
 {
     [Header("Pickup Item Scripts")]
-    [SerializeField] private PickupItemController itemController;
+    [SerializeField] private PickupItemInteractable itemInteractable;
     [SerializeField] private Selectable itemSelectable;
 
     [Header("UI Components")]
@@ -29,8 +29,8 @@ public class PickupItemUi : MonoBehaviour
     {
         ShowUi();
 
-        itemNameText.text = itemController.ItemData.GetItemName();
-        itemInteractionText.text = "TODO: Item Interaction";
+        itemNameText.text = itemInteractable.ItemData.GetItemName();
+        itemInteractionText.text = itemInteractable.Interaction.GetInteractionTitle();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(uiContainer);
     }

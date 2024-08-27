@@ -69,7 +69,7 @@ public abstract class PlayerBaseState : BaseState<PlayerStateMachine>
         StateMachine.SwitchState(new PlayerStartInteractionState(StateMachine, interactable));
     }
 
-    public void OnPickup(Interactable interactable)
+    public void OnPickup(PickupItemInteractable interactable)
     {
         StateMachine.SwitchState(new PlayerPickupState(StateMachine, interactable));
     }

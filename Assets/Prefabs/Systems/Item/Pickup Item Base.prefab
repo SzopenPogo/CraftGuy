@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8863294212077098334}
-  - component: {fileID: 2796041012165839852}
+  - component: {fileID: 494924465492124893}
   m_Layer: 0
   m_Name: Pickup Item Base
   m_TagString: Untagged
@@ -524,7 +524,7 @@ Transform:
   - {fileID: 2658029815148074127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2796041012165839852
+--- !u!114 &494924465492124893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8368537353912061631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8e33baecee3764ebe5b7e82098dc90, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aeb23cbad6f53b45b9d6fa0c8046d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Interaction>k__BackingField: {fileID: 11400000, guid: 51930ab216429e74b96d190380330658,
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e186fb5ffae3a7342a3f27827cc533ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemController: {fileID: 2796041012165839852}
+  itemInteractable: {fileID: 494924465492124893}
   itemSelectable: {fileID: 6716818683704048260}
   uiContainer: {fileID: 6992077953893087822}
   itemNameText: {fileID: 2067353970375540929}

@@ -15,6 +15,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: Header("Values")]
     [field: SerializeField] public MovementValues MovementValues { get; private set; }
+    [field: SerializeField] public PickupValues PickupValues { get; private set; }
 
     protected override void ApplyStart()
     {
