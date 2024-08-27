@@ -538,8 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Interaction>k__BackingField: {fileID: 11400000, guid: 51930ab216429e74b96d190380330658,
     type: 2}
-  <ItemData>k__BackingField: {fileID: 11400000, guid: 60401be0546db9b4b9a83fb0309d5844,
-    type: 2}
+  <ItemData>k__BackingField: {fileID: 0}
 --- !u!1 &8473201646667283592
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,12 @@ public class PlayerPickupState : PlayerBaseState
     public override void Enter()
     {
         SetAnimation(PickupAnimationName, CrossFadeDuration);
+        StateMachine.Selector.DisableSelector();
     }
 
     public override void Exit()
     {
-
+        StateMachine.Selector.EnableSelector();
     }
 
     public override void Tick()

@@ -28,6 +28,8 @@ public abstract class Selector : MonoBehaviour
     public void DisableSelector()
     {
         IsSelectorActive = false;
+
+        Deselect();
     }
 
     protected void Select(ISelectable selectable)
@@ -44,7 +46,7 @@ public abstract class Selector : MonoBehaviour
         if (SelectedSelectable == null)
             return;
 
-        SelectedSelectable.Deselect();
+        SelectedSelectable?.Deselect();
         OnDeselect?.Invoke(SelectedSelectable);
 
         SelectedSelectable = null;

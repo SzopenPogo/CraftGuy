@@ -15,3 +15,6 @@ MonoBehaviour:
   itemName: Iron
   <ItemIcon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000,
     type: 0}
+  <ItemPickupPrefab>k__BackingField: {fileID: 8749408000285177013, guid: 4f01020c06fae014eb78280dc8d5d662,
+    type: 3}
+  <ItemDropForwardMargin>k__BackingField: 0.6
