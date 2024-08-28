@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Nailed Pala
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: a2e99c3d719663542918a932e9d473fa,
     type: 3}
-  <ItemPickupPrefab>k__BackingField: {fileID: 8749408000285177013, guid: 4f01020c06fae014eb78280dc8d5d662,
+  <ItemPickupPrefab>k__BackingField: {fileID: 4862839709709581432, guid: ecdccf34fa48a0243b4a6bee91d5390e,
     type: 3}

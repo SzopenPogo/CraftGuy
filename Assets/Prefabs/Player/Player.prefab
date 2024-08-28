@@ -1500,9 +1500,12 @@ MonoBehaviour:
   <InteractionManager>k__BackingField: {fileID: 2457559137060571443}
   <Inventory>k__BackingField: {fileID: 6302517290140546151}
   <Selector>k__BackingField: {fileID: 2321938155491014129}
+  <ItemDropper>k__BackingField: {fileID: 7892490636286845975}
   <MovementValues>k__BackingField: {fileID: 11400000, guid: c0db45bf5058b884782830b84af6e547,
     type: 2}
   <PickupValues>k__BackingField: {fileID: 11400000, guid: f019672ffdadae34ca184b15cf4ba7b8,
+    type: 2}
+  <DropItemValues>k__BackingField: {fileID: 11400000, guid: d3a94fbffd0009247999b602d5d12f95,
     type: 2}
 --- !u!1 &4951485099633406778
 GameObject:
@@ -2389,7 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  boxCastSize: {x: 0.1, y: 0.1, z: 0.1}
+  boxCastSize: {x: 0.2, y: 0.2, z: 0.2}
   boxCastDistance: 8
   ignoredLayersMasks:
     serializedVersion: 2

@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class ItemDropper : MonoBehaviour
 {
+    public event Action<InventoryItem> OnDropIntemStarted;
+
     [Header("Transforms")]
     [SerializeField] private Transform detectDropPositionRayOrigin;
     [SerializeField] private Transform rootTransform;
@@ -9,17 +12,6 @@ public class ItemDropper : MonoBehaviour
     [Header("Ray Settings")]
     [SerializeField] private LayerMask ignoredLayers;
     [SerializeField] private float raycastDistance;
-
-    [SerializeField] private ItemData testItem;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            DropItem(testItem);
-            Debug.Log("DROP ITEM");
-        }
-    }
 
     private void OnDrawGizmos()
     {
@@ -30,6 +22,11 @@ public class ItemDropper : MonoBehaviour
 
         Vector3 rayDirection = detectDropPositionRayOrigin.forward * raycastDistance;
         Gizmos.DrawRay(detectDropPositionRayOrigin.position, rayDirection);
+    }
+
+    public void StartDropItem(InventoryItem item)
+    {
+        OnDropIntemStarted?.Invoke(item);
     }
 
     public void DropItem(ItemData item)

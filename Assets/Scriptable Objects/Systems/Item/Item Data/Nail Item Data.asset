@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Nail
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: 50b16ef53e6034c418f7cc24a9e15600,
     type: 3}
-  <ItemPickupPrefab>k__BackingField: {fileID: 8749408000285177013, guid: 4f01020c06fae014eb78280dc8d5d662,
+  <ItemPickupPrefab>k__BackingField: {fileID: 7220761152665421347, guid: 53aa0add95f9166419627c1ef5327fb1,
     type: 3}

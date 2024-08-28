@@ -112,16 +112,23 @@ public class PlayerFreelookState : PlayerBaseState
     private void HandleInteractionInEnter()
     {
         StateMachine.InteractionManager.OnInteractionInitialized += StartInteraction;
+        StateMachine.ItemDropper.OnDropIntemStarted += StartDropItem;
     }
 
     private void HandleInteractionInExit()
     {
         StateMachine.InteractionManager.OnInteractionInitialized -= StartInteraction;
+        StateMachine.ItemDropper.OnDropIntemStarted -= StartDropItem;
     }
 
     private void StartInteraction(Interactable interactable)
     {
         OnStartInteraction(interactable);
+    }
+
+    private void StartDropItem(InventoryItem itemToDrop)
+    {
+        OnDropItem(itemToDrop);
     }
     #endregion
 }

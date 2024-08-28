@@ -13,10 +13,12 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public InteractionManager InteractionManager { get; private set; }
     [field: SerializeField] public Inventory Inventory { get; private set; }
     [field: SerializeField] public Selector Selector { get; private set; }
+    [field: SerializeField] public ItemDropper ItemDropper { get; private set; }
 
     [field: Header("Values")]
     [field: SerializeField] public MovementValues MovementValues { get; private set; }
     [field: SerializeField] public PickupValues PickupValues { get; private set; }
+    [field: SerializeField] public DropItemValues DropItemValues { get; private set; }
 
     protected override void ApplyStart()
     {

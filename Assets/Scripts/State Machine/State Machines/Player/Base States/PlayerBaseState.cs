@@ -73,5 +73,10 @@ public abstract class PlayerBaseState : BaseState<PlayerStateMachine>
     {
         StateMachine.SwitchState(new PlayerPickupState(StateMachine, interactable));
     }
+
+    public void OnDropItem(InventoryItem inventoryItem)
+    {
+        StateMachine.SwitchState(new PlayerDropItemState(StateMachine, inventoryItem));
+    }
     #endregion
 }

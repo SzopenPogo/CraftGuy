@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44d75f53e1d3cd4db9cc473e6903a3c, type: 3}
-  m_Name: Pickup Interaction
+  m_Script: {fileID: 11500000, guid: c0938328a647ee24d85fb9fb259c54a7, type: 3}
+  m_Name: Player Drop Item Values
   m_EditorClassIdentifier: 
-  interactionTitle: Press E to pickup
-  <InteractionType>k__BackingField: 0
+  <DropItemNormalizedTime>k__BackingField: 0.4
+  <ExitStateNormalizedTime>k__BackingField: 0.7
