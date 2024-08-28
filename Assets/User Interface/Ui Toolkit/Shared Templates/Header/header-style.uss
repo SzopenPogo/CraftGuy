@@ -1,0 +1,95 @@
+.header {
+    width: 100%;
+    height: auto;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    background-color: rgba(0, 0, 0, 0.43);
+    border-bottom-width: 3px;
+    border-left-color: rgba(114, 114, 114, 0.62);
+    border-right-color: rgba(114, 114, 114, 0.62);
+    border-top-color: rgba(114, 114, 114, 0.62);
+    border-bottom-color: rgba(114, 114, 114, 0.62);
+    margin-bottom: 45px;
+}
+
+.header-title {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    height: 100%;
+    -unity-text-align: upper-center;
+    color: rgb(255, 255, 255);
+    font-size: 42px;
+    -unity-font-style: normal;
+    width: auto;
+    align-self: center;
+}
+
+.header-close-button {
+    width: 48px;
+    height: 48px;
+    background-color: rgb(159, 21, 17);
+    border-left-color: rgba(231, 168, 45, 0.79);
+    border-right-color: rgba(231, 168, 45, 0.79);
+    border-top-color: rgba(231, 168, 45, 0.79);
+    border-bottom-color: rgba(231, 168, 45, 0.79);
+    -unity-font-style: bold;
+    color: rgb(231, 167, 45);
+    font-size: 45px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    transition-duration: 0.3s;
+}
+
+.header-close-button:hover {
+    background-color: rgb(200, 18, 12);
+    color: rgb(231, 151, 42);
+    border-left-color: rgb(231, 152, 43);
+    border-right-color: rgb(231, 152, 43);
+    border-top-color: rgb(231, 152, 43);
+    border-bottom-color: rgb(231, 152, 43);
+}
+
+.header-icon-container {
+    width: 100px;
+}
+
+.header-icon {
+    width: 110px;
+    height: 110px;
+    translate: 0 0;
+    position: absolute;
+    top: -55%;
+    left: -30px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    overflow: hidden;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-left-color: rgb(74, 74, 74);
+    border-right-color: rgb(74, 74, 74);
+    border-top-color: rgb(74, 74, 74);
+    border-bottom-color: rgb(74, 74, 74);
+    background-color: rgb(0, 0, 0);
+    background-image: none;
+}
