@@ -1,10 +1,12 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UiCraftingRecipes
 {
+    public event Action<UiCraftingRecipe> OnCraftingRecipeSelect;
+    public event Action OnCraftingRecipeDeselect;
+
     public UiCraftingController UiCraftingController { get; private set; }
     private VisualElement recipesContainer;
     private ScrollView recipes;
@@ -13,12 +15,27 @@ public class UiCraftingRecipes
 
     public UiCraftingRecipes(UiCraftingController uiCraftingController)
     {
-        this.UiCraftingController = uiCraftingController;
+        UiCraftingController = uiCraftingController;
         recipesContainer = uiCraftingController.Root.Q<VisualElement>("Recipes-Container");
         recipes = recipesContainer.Q<ScrollView>("Recipes");
 
         recipes.RegisterCallback<WheelEvent>(EnableSlotsWindowScroll);
 
+        InitailizeRecipes();
+
+        UiCraftingController.OnWindowDisable += Deinitialize;
+        UiCraftingController.AssignedCrafting.Inventory.OnInventoryChange += InitailizeRecipes;
+    }
+
+    private void Deinitialize()
+    {
+        UiCraftingController.AssignedCrafting.Inventory.OnInventoryChange -= InitailizeRecipes;
+        UiCraftingController.OnWindowDisable -= Deinitialize;
+    }
+
+    private void InitailizeRecipes()
+    {
+        DeselectRecipe();
         RenderRecipes();
     }
 
@@ -48,10 +65,22 @@ public class UiCraftingRecipes
         if (selectedRecipe == recipe)
             return;
 
-        if(selectedRecipe != null)
-            selectedRecipe.Deselect();
+        if (selectedRecipe != null)
+            DeselectRecipe();
 
         selectedRecipe = recipe;
         selectedRecipe.Select();
+
+        OnCraftingRecipeSelect?.Invoke(selectedRecipe);
+    }
+
+    private void DeselectRecipe()
+    {
+        if (selectedRecipe == null)
+            return;
+
+        selectedRecipe.Deselect();
+
+        OnCraftingRecipeDeselect?.Invoke();
     }
 }

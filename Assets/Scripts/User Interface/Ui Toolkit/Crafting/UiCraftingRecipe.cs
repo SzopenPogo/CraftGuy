@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UiCraftingRecipe
 {
+    public CraftingRecipe CraftingRecipe { get; private set; }
     private UiCraftingRecipes uiCraftingRecipes;
-    private CraftingRecipe craftingRecipe;
 
     private VisualElement container;
     private VisualElement icon;
@@ -23,7 +20,7 @@ public class UiCraftingRecipe
     {
 
         this.uiCraftingRecipes = uiCraftingRecipes;
-        this.craftingRecipe = craftingRecipe;
+        CraftingRecipe = craftingRecipe;
 
         container = renderedRecipe.Q<VisualElement>("Recipe");
         icon = renderedRecipe.Q<VisualElement>("Recipe-Icon");
@@ -43,9 +40,9 @@ public class UiCraftingRecipe
 
     private void InitializeUiElements()
     {
-        icon.style.backgroundImage = new StyleBackground(craftingRecipe.RecipeCraftItem.ItemIcon);
-        title.text = craftingRecipe.RecipeCraftItem.GetItemName();
-        description.text = craftingRecipe.GetDescription();
+        icon.style.backgroundImage = new StyleBackground(CraftingRecipe.RecipeCraftItem.ItemIcon);
+        title.text = CraftingRecipe.RecipeCraftItem.GetItemName();
+        description.text = CraftingRecipe.GetDescription();
     }
 
     private void Deinitialize()
@@ -62,9 +59,9 @@ public class UiCraftingRecipe
 
         bool isMainRequiredItemRendered = false;
 
-        foreach (ItemData itemData in craftingRecipe.RequiredItems)
+        foreach (ItemData itemData in CraftingRecipe.RequiredItems)
         {
-            if (!isMainRequiredItemRendered 
+            if (!isMainRequiredItemRendered
                 && itemData == uiCraftingRecipes.UiCraftingController.MainRequiredItem.ItemData)
             {
                 RenderRecipeComponent(uiCraftingRecipes.UiCraftingController.MainRequiredItem, true);
@@ -88,8 +85,7 @@ public class UiCraftingRecipe
         VisualElement renderedRecipe = uiCraftingRecipes.UiCraftingController.RecipeComponentTemplate.Instantiate();
         components.Add(renderedRecipe);
 
-        UiCraftingRecipeComponent component = new(uiCraftingRecipes.UiCraftingController, renderedRecipe, inventoryItem,
-            isInInventory);
+        UiCraftingRecipeComponent component = new(renderedRecipe, inventoryItem, isInInventory);
     }
     #endregion
 

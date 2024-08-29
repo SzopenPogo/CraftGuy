@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UiCraftingRecipeComponent
 {
-
-    private UiCraftingController uiCraftingController;
-    private VisualElement renderedComponent;
     private InventoryItem item;
     private bool isInInventory;
 
@@ -17,11 +11,9 @@ public class UiCraftingRecipeComponent
 
     private const string InactiveClassName = "recipe-component--inactive";
 
-    public UiCraftingRecipeComponent(UiCraftingController uiCraftingController, VisualElement renderedComponent,
+    public UiCraftingRecipeComponent(VisualElement renderedComponent,
         InventoryItem item, bool isInInventory)
     {
-        this.uiCraftingController = uiCraftingController;
-        this.renderedComponent = renderedComponent;
         this.item = item;
         this.isInInventory = isInInventory;
 

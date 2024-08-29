@@ -895,6 +895,21 @@ MonoBehaviour:
     type: 3}
   <RecipeComponentTemplate>k__BackingField: {fileID: 9197481963319205126, guid: 9916e33d84d9e7b4598d8de2329952d0,
     type: 3}
+  <OnCraftButtonClick>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1854540364}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: StartCraftItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &931335601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,12 +2497,12 @@ PrefabInstance:
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017203536
+      value: 0.000000017203536
       objectReference: {fileID: 0}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.1297526e-10
+      value: 3.1297526e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

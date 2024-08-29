@@ -26,4 +26,10 @@ public class CraftingRecipe : ScriptableObject
 
         return stringBuilder.ToString();
     }
+
+    public float GetMinCraftChace() =>
+        MinCraftChance;
+
+    public float GetMaxCraftChance() =>
+        MaxCraftChance;
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class UiCraftingController : UiToolkitWindow
@@ -9,6 +10,9 @@ public class UiCraftingController : UiToolkitWindow
     [field: Header("Templates")]
     [field: SerializeField] public VisualTreeAsset RecipeTemplate { get; private set; }
     [field: SerializeField] public VisualTreeAsset RecipeComponentTemplate { get; private set; }
+
+    [field: Header("Button Events")]
+    [field: SerializeField] public UnityEvent<CraftingRecipe, InventoryItem> OnCraftButtonClick { get; private set; }
 
     public UiCraftingContainer UiCraftingContainer { get; private set; }
     public UiCraftingRecipes UiCraftingRecipes { get; private set; }
@@ -35,8 +39,8 @@ public class UiCraftingController : UiToolkitWindow
     {
         MainRequiredItem = requiredItem;
 
-        UiCraftingContainer = new(this);
         UiCraftingRecipes = new(this);
+        UiCraftingContainer = new(this);
     }
 
     private void HandleInventoryChanged()
@@ -45,5 +49,10 @@ public class UiCraftingController : UiToolkitWindow
             return;
 
         AssignedCrafting.CancelCrafting();
+    }
+
+    public void DispatchCraftButtonClick(CraftingRecipe craftingRecipe)
+    {
+        OnCraftButtonClick?.Invoke(craftingRecipe, MainRequiredItem);
     }
 }
