@@ -78,5 +78,20 @@ public abstract class PlayerBaseState : BaseState<PlayerStateMachine>
     {
         StateMachine.SwitchState(new PlayerDropItemState(StateMachine, inventoryItem));
     }
+
+    public void OnPrepareCrafting(bool wasPrepared)
+    {
+        StateMachine.SwitchState(new PlayerPrepareCraftingState(StateMachine, wasPrepared));
+    }
+
+    public void OnStartCrafting()
+    {
+        StateMachine.SwitchState(new PlayerCraftState(StateMachine));
+    }
+
+    public void OnCancelCrafting()
+    {
+        StateMachine.SwitchState(new PlayerCancelCraftState(StateMachine));
+    }
     #endregion
 }

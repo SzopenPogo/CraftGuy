@@ -25,11 +25,15 @@ public class PlayerFreelookState : PlayerBaseState
     {
         InitializeEnterAnimation();
         HandleInteractionInEnter();
+
+        StateMachine.Selector.EnableSelector();
     }
 
     public override void Exit()
     {
         HandleInteractionInExit();
+
+        StateMachine.Selector.DisableSelector();
     }
 
     public override void Tick()
@@ -113,12 +117,17 @@ public class PlayerFreelookState : PlayerBaseState
     {
         StateMachine.InteractionManager.OnInteractionInitialized += StartInteraction;
         StateMachine.ItemDropper.OnDropIntemStarted += StartDropItem;
+        StateMachine.Crafting.OnPrepareCrafting += StartPrepareCrafting;
+
+        if (StateMachine.Crafting.IsCraftingPrepared)
+            StartPrepareCrafting(StateMachine.Crafting.CraftingPrepredMainRequiredItem);
     }
 
     private void HandleInteractionInExit()
     {
         StateMachine.InteractionManager.OnInteractionInitialized -= StartInteraction;
         StateMachine.ItemDropper.OnDropIntemStarted -= StartDropItem;
+        StateMachine.Crafting.OnPrepareCrafting -= StartPrepareCrafting;
     }
 
     private void StartInteraction(Interactable interactable)
@@ -129,6 +138,11 @@ public class PlayerFreelookState : PlayerBaseState
     private void StartDropItem(InventoryItem itemToDrop)
     {
         OnDropItem(itemToDrop);
+    }
+
+    private void StartPrepareCrafting(InventoryItem inventoryItem)
+    {
+        OnPrepareCrafting(false);
     }
     #endregion
 }

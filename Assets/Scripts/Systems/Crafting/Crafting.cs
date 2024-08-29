@@ -16,39 +16,33 @@ public class Crafting : MonoBehaviour
 
     [field: SerializeField] public UnityEvent<bool> OnCraftItem { get; private set; }
 
-    private bool isCraftingPrepared;
+    public bool IsCraftingPrepared { get; private set; }
+    public InventoryItem CraftingPrepredMainRequiredItem { get; private set; }
     private Coroutine craftingProgressCoroutine;
 
     #region Crafting Status
     public void PrepareCrafting(InventoryItem mainRequiredItem)
     {
-        if (isCraftingPrepared)
+        if (IsCraftingPrepared)
             CancelCrafting();
 
         OnPrepareCrafting?.Invoke(mainRequiredItem);
 
-        isCraftingPrepared = true;
+        IsCraftingPrepared = true;
+        CraftingPrepredMainRequiredItem = mainRequiredItem;
     }
 
     public void CancelCrafting()
     {
         OnCancelCrafting?.Invoke();
 
-        isCraftingPrepared = false;
+        IsCraftingPrepared = false;
+        CraftingPrepredMainRequiredItem = null;
     }
 
     public void StartCraftItem(CraftingRecipe recipe, InventoryItem mainRequiredItem)
     {
-        if (!TryGetSecondRequiredItem(recipe, mainRequiredItem, out InventoryItem secondRequiredItem))
-            return;
-
-        List<InventoryItem> requiredInventoryItems = new()
-        {
-            mainRequiredItem,
-            secondRequiredItem
-        };
-
-        AttemptCrafting(recipe, requiredInventoryItems);
+        StartCraftingProgressCoroutine(recipe, mainRequiredItem);
 
         OnCraftingStart?.Invoke();
 
@@ -141,8 +135,20 @@ public class Crafting : MonoBehaviour
         return true;
     }
 
-    private bool AttemptCrafting(CraftingRecipe recipe, List<InventoryItem> requiredItems)
+    private bool AttemptCrafting(CraftingRecipe recipe, InventoryItem mainRequiredItem)
     {
+        if (!TryGetSecondRequiredItem(recipe, mainRequiredItem, out InventoryItem secondRequiredItem))
+        {
+            OnCraftItem?.Invoke(false);
+            return false;
+        }
+
+        List<InventoryItem> requiredItems = new()
+        {
+            mainRequiredItem,
+            secondRequiredItem
+        };
+
         bool isCrafted = IsCraftItemChance(recipe);
 
         if (isCrafted)
@@ -153,12 +159,12 @@ public class Crafting : MonoBehaviour
     }
 
     #region Crafting Coroutine
-    private void StartCraftingProgressCoroutine()
+    private void StartCraftingProgressCoroutine(CraftingRecipe recipe, InventoryItem mainRequiredItem)
     {
         if (craftingProgressCoroutine != null)
             return;
 
-        craftingProgressCoroutine = StartCoroutine(CraftingProgressCoroutine());
+        craftingProgressCoroutine = StartCoroutine(CraftingProgressCoroutine(recipe, mainRequiredItem));
     }
 
     private void StopCraftingProgressCoroutine()
@@ -170,12 +176,23 @@ public class Crafting : MonoBehaviour
         craftingProgressCoroutine = null;
     }
 
-    private IEnumerator CraftingProgressCoroutine()
+    private IEnumerator CraftingProgressCoroutine(CraftingRecipe recipe, InventoryItem mainRequiredItem)
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(recipe.CraftTime);
 
+            if (!IsCraftingPrepared)
+            {
+                FinishCraftItem(false);
+                StopCraftingProgressCoroutine();
+                yield break;
+            }
+
+            bool isCrafted = AttemptCrafting(recipe, mainRequiredItem);
+
+            FinishCraftItem(isCrafted);
+            StopCraftingProgressCoroutine();
         }
     }
     #endregion

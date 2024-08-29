@@ -34,8 +34,12 @@ public class UiCraftingContainer
         ResetContainer();
 
         uiCraftingController.OnWindowDisable += Deinitialize;
+
         uiCraftingController.UiCraftingRecipes.OnCraftingRecipeSelect += InitializeSelectedRecipe;
         uiCraftingController.UiCraftingRecipes.OnCraftingRecipeDeselect += ResetContainer;
+
+        uiCraftingController.AssignedCrafting.OnCraftingStart += HandleStartCraft;
+        uiCraftingController.AssignedCrafting.OnCraftingFinish += HandleFinishCraft;
     }
 
     #region Main Managment
@@ -53,8 +57,12 @@ public class UiCraftingContainer
         craftButton.UnregisterCallback<ClickEvent>(HandleCraftButtonClick);
 
         uiCraftingController.UiCraftingRecipes.OnCraftingRecipeSelect -= InitializeSelectedRecipe;
+
         uiCraftingController.OnWindowDisable -= Deinitialize;
         uiCraftingController.UiCraftingRecipes.OnCraftingRecipeDeselect -= ResetContainer;
+
+        uiCraftingController.AssignedCrafting.OnCraftingStart -= HandleStartCraft;
+        uiCraftingController.AssignedCrafting.OnCraftingFinish -= HandleFinishCraft;
     }
     #endregion
 
@@ -120,5 +128,25 @@ public class UiCraftingContainer
         }
     }
 
+    #endregion
+
+    #region Start / Finish Crafting
+    private void HandleStartCraft()
+    {
+        DisableCraftButton();
+        EnableCraftingStatus("Crafting in progress...");
+    }
+
+    private void HandleFinishCraft(bool isCrafted)
+    {
+        if (!isCrafted)
+        {
+            EnableCraftingStatus("Crafting failed!");
+            EnableCraftButton();
+            return;
+        }
+
+        ResetContainer();
+    }
     #endregion
 }

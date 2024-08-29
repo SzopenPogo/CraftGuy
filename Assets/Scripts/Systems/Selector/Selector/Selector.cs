@@ -7,7 +7,7 @@ public abstract class Selector : MonoBehaviour
     public event Action<ISelectable> OnDeselect;
 
     public ISelectable SelectedSelectable { get; private set; }
-    public bool IsSelectorActive { get; private set; } = true;
+    public bool IsSelectorActive { get; private set; } = false;
 
     public bool IsSomethingSelected()
     {

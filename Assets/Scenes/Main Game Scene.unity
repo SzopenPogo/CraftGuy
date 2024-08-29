@@ -895,6 +895,8 @@ MonoBehaviour:
     type: 3}
   <RecipeComponentTemplate>k__BackingField: {fileID: 9197481963319205126, guid: 9916e33d84d9e7b4598d8de2329952d0,
     type: 3}
+  <NoRecipesFoundTemplate>k__BackingField: {fileID: 9197481963319205126, guid: 05367c95b200f1e4f869b89bb8f40eb1,
+    type: 3}
   <OnCraftButtonClick>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -2465,44 +2467,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: craftingRecipes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: craftingRecipes.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6bb4d0a57dedaf54bbaa9ca9c29315b2,
-        type: 2}
-    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: craftingRecipes.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 05a06524eea4af34ab7396cc5c8e3415,
-        type: 2}
-    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: craftingRecipes.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: e8dc422a2e6ee4c4bae62808f775a547,
-        type: 2}
-    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: craftingRecipes.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 90539f5b9c876a942b3d284900043151,
-        type: 2}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017203536
+      value: -0.000000017203536
       objectReference: {fileID: 0}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 3.1297526e-10
+      value: -3.1297526e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

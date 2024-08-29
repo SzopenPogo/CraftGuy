@@ -1133,7 +1133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4247963960757855160}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.018189488, y: 0.000000017203536, z: 3.1297526e-10, w: 0.9998346}
+  m_LocalRotation: {x: -0.018189488, y: -0.000000017203536, z: -3.1297526e-10, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1501,6 +1501,7 @@ MonoBehaviour:
   <Inventory>k__BackingField: {fileID: 6302517290140546151}
   <Selector>k__BackingField: {fileID: 2321938155491014129}
   <ItemDropper>k__BackingField: {fileID: 7892490636286845975}
+  <Crafting>k__BackingField: {fileID: 5676014799909215678}
   <MovementValues>k__BackingField: {fileID: 11400000, guid: c0db45bf5058b884782830b84af6e547,
     type: 2}
   <PickupValues>k__BackingField: {fileID: 11400000, guid: f019672ffdadae34ca184b15cf4ba7b8,
@@ -1584,6 +1585,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Inventory>k__BackingField: {fileID: 6302517290140546151}
+  craftingRecipes:
+  - {fileID: 11400000, guid: 6bb4d0a57dedaf54bbaa9ca9c29315b2, type: 2}
+  - {fileID: 11400000, guid: 05a06524eea4af34ab7396cc5c8e3415, type: 2}
+  - {fileID: 11400000, guid: e8dc422a2e6ee4c4bae62808f775a547, type: 2}
+  - {fileID: 11400000, guid: 90539f5b9c876a942b3d284900043151, type: 2}
+  <OnCraftItem>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5393311633746754702
 GameObject:
   m_ObjectHideFlags: 0

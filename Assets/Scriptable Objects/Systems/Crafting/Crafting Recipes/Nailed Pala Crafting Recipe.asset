@@ -17,5 +17,5 @@ MonoBehaviour:
   <RequiredItems>k__BackingField:
   - {fileID: 11400000, guid: d0a339e1efe39f84a9ccffb44e9026a3, type: 2}
   - {fileID: 11400000, guid: d870104fc6ba7174dab69330069d7e84, type: 2}
-  <CraftChance>k__BackingField: 100
+  <CraftChance>k__BackingField: 4
   <CraftTime>k__BackingField: 3

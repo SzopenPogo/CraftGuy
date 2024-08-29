@@ -18,14 +18,11 @@ public class PlayerDropItemState : PlayerBaseState
 
     public override void Enter()
     {
-        SetAnimation(DropAnimationName, CrossFadeDuration);
-
-        StateMachine.Selector.DisableSelector();
+        SetAnimation(DropAnimationName, CrossFadeDuration);        
     }
 
     public override void Exit()
     {
-        StateMachine.Selector.EnableSelector();
     }
 
     public override void Tick()

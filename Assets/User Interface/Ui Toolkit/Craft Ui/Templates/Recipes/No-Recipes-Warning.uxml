@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Label tabindex="-1" text="No recipes found" parse-escape-sequences="true" display-tooltip-when-elided="true" name="No-Recipes-Warning" class="no-recipes-warning" />
+</ui:UXML>

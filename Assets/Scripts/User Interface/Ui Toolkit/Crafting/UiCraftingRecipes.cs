@@ -13,6 +13,8 @@ public class UiCraftingRecipes
 
     private UiCraftingRecipe selectedRecipe;
 
+    private const string RecipesHiddenClassName = "recipes-hidden";
+
     public UiCraftingRecipes(UiCraftingController uiCraftingController)
     {
         UiCraftingController = uiCraftingController;
@@ -24,13 +26,21 @@ public class UiCraftingRecipes
         InitailizeRecipes();
 
         UiCraftingController.OnWindowDisable += Deinitialize;
+
         UiCraftingController.AssignedCrafting.Inventory.OnInventoryChange += InitailizeRecipes;
+
+        UiCraftingController.AssignedCrafting.OnCraftingStart += HideRenderedRecipes;
+        UiCraftingController.AssignedCrafting.OnCraftingFinish += HandleCraftFinished;
     }
 
     private void Deinitialize()
     {
         UiCraftingController.AssignedCrafting.Inventory.OnInventoryChange -= InitailizeRecipes;
+
         UiCraftingController.OnWindowDisable -= Deinitialize;
+
+        UiCraftingController.AssignedCrafting.OnCraftingStart -= HideRenderedRecipes;
+        UiCraftingController.AssignedCrafting.OnCraftingFinish -= HandleCraftFinished;
     }
 
     private void InitailizeRecipes()
@@ -45,6 +55,13 @@ public class UiCraftingRecipes
 
         List<CraftingRecipe> matchingRecipes = UiCraftingController.AssignedCrafting.GetMainRequiredItemRecipes(
             UiCraftingController.MainRequiredItem);
+
+        if(matchingRecipes.Count <= 0)
+        {
+            VisualElement renderedRecipe = UiCraftingController.NoRecipesFoundTemplate.Instantiate();
+            recipes.Add(renderedRecipe);
+            return;
+        }
 
         foreach (CraftingRecipe craftingRecipe in matchingRecipes)
         {
@@ -82,5 +99,20 @@ public class UiCraftingRecipes
         selectedRecipe.Deselect();
 
         OnCraftingRecipeDeselect?.Invoke();
+    }
+
+    private void ShowRenderedRecipes()
+    {
+        recipes.RemoveFromClassList(RecipesHiddenClassName);
+    }
+
+    private void HideRenderedRecipes()
+    {
+        recipes.AddToClassList(RecipesHiddenClassName);
+    }
+
+    private void HandleCraftFinished(bool isCrafted)
+    {
+        ShowRenderedRecipes();
     }
 }

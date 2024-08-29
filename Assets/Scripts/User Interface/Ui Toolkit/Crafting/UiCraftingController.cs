@@ -10,6 +10,7 @@ public class UiCraftingController : UiToolkitWindow
     [field: Header("Templates")]
     [field: SerializeField] public VisualTreeAsset RecipeTemplate { get; private set; }
     [field: SerializeField] public VisualTreeAsset RecipeComponentTemplate { get; private set; }
+    [field: SerializeField] public VisualTreeAsset NoRecipesFoundTemplate { get; private set; }
 
     [field: Header("Button Events")]
     [field: SerializeField] public UnityEvent<CraftingRecipe, InventoryItem> OnCraftButtonClick { get; private set; }
