@@ -2450,6 +2450,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
+      propertyPath: craftingRecipes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
+      propertyPath: craftingRecipes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bb4d0a57dedaf54bbaa9ca9c29315b2,
+        type: 2}
+    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
+      propertyPath: craftingRecipes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 05a06524eea4af34ab7396cc5c8e3415,
+        type: 2}
+    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
+      propertyPath: craftingRecipes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e8dc422a2e6ee4c4bae62808f775a547,
+        type: 2}
+    - target: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+        type: 3}
+      propertyPath: craftingRecipes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90539f5b9c876a942b3d284900043151,
+        type: 2}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.y

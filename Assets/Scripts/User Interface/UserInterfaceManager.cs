@@ -104,7 +104,8 @@ public class UserInterfaceManager : MonoBehaviour
     private void PrepareCraftingUi(InventoryItem mainRequiredItem)
     {
         OpenCraftingUi();
-        craftingController.SetMainRequiredItem(mainRequiredItem);
+
+        craftingController.Initialize(mainRequiredItem);
     }
 
     private void OpenCraftingUi()

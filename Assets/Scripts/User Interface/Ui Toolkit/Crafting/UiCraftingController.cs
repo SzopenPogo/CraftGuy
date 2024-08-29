@@ -4,12 +4,14 @@ using UnityEngine.UIElements;
 public class UiCraftingController : UiToolkitWindow
 {
     public Crafting AssignedCrafting { get; private set; }
-
     public InventoryItem MainRequiredItem { get; private set; }
 
     [field: Header("Templates")]
     [field: SerializeField] public VisualTreeAsset RecipeTemplate { get; private set; }
     [field: SerializeField] public VisualTreeAsset RecipeComponentTemplate { get; private set; }
+
+    public UiCraftingContainer UiCraftingContainer { get; private set; }
+    public UiCraftingRecipes UiCraftingRecipes { get; private set; }
 
     protected override void ApplyOnEnable()
     {
@@ -18,7 +20,7 @@ public class UiCraftingController : UiToolkitWindow
         AssignedCrafting = PlayerCrafting.Instance;
 
         UiHeaderCloseButton closeButton = new(this);
-
+        
         AssignedCrafting.Inventory.OnInventoryChange += HandleInventoryChanged;
     }
 
@@ -29,9 +31,12 @@ public class UiCraftingController : UiToolkitWindow
         AssignedCrafting.Inventory.OnInventoryChange -= HandleInventoryChanged;
     }
 
-    public void SetMainRequiredItem(InventoryItem requiredItem)
+    public void Initialize(InventoryItem requiredItem)
     {
         MainRequiredItem = requiredItem;
+
+        UiCraftingContainer = new(this);
+        UiCraftingRecipes = new(this);
     }
 
     private void HandleInventoryChanged()

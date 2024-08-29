@@ -65,4 +65,25 @@ public class Inventory : MonoBehaviour
         return Items.Contains(item);
     }
     #endregion
+
+    #region Get Item
+    public bool TryGetInventoryItem(ItemData itemData, InventoryItem ignoredItem, out InventoryItem inventoryItem)
+    {
+        inventoryItem = null;
+
+        foreach (InventoryItem item in Items)
+        {
+            if(ignoredItem != null && item == ignoredItem)
+                continue;
+
+            if (item.ItemData != itemData)
+                continue;
+
+            inventoryItem = item;
+            return true;
+        }
+
+        return false;
+    }
+    #endregion
 }

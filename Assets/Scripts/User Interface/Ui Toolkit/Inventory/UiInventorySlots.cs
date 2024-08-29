@@ -34,6 +34,7 @@ public class UiInventorySlots
     private void RenderSlots()
     {
         slotsContainer.Clear();
+        renderedSlots.Clear();
 
         foreach (InventoryItem item in inventoryController.AssignedInventory.Items)
         {
