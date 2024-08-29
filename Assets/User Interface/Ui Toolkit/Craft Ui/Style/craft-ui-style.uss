@@ -52,7 +52,7 @@
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    background-image: url('project://database/Assets/Images/Icons/Item%20Icons/Axe%20Icon.png?fileID=2800000&guid=64ec77ea14bc69444bae087dc258f955&type=3#Axe Icon');
+    background-image: none;
     -unity-background-scale-mode: stretch-to-fill;
 }
 
@@ -60,6 +60,7 @@
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
     font-size: 24px;
+    visibility: visible;
 }
 
 .recipes-container {
@@ -270,6 +271,8 @@
     -unity-font-style: bold;
     -unity-text-align: middle-center;
     font-size: 20px;
+    display: flex;
+    visibility: hidden;
 }
 
 .craft-button--inactive {

@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
 
     protected bool IsInventoryOpen { get; private set; }
 
+    #region Managment
+
     public void OpenInventory()
     {
         if (IsInventoryOpen)
@@ -31,7 +33,9 @@ public class Inventory : MonoBehaviour
 
         IsInventoryOpen = false;
     }
+    #endregion
 
+    #region Add Item
     public void AddItem(ItemData itemData)
     {
         AddItem(new InventoryItem(itemData));
@@ -42,7 +46,9 @@ public class Inventory : MonoBehaviour
         Items.Add(inventoryItem);
         OnInventoryChange?.Invoke();
     }
+    #endregion
 
+    #region Remove Item
     public void RemoveItem(InventoryItem item)
     {
         if (!Items.Contains(item))
@@ -51,4 +57,12 @@ public class Inventory : MonoBehaviour
         Items.Remove(item);
         OnInventoryChange?.Invoke();
     }
+    #endregion
+
+    #region Check Item
+    public bool IsInventoryItemInInventory(InventoryItem item)
+    {
+        return Items.Contains(item);
+    }
+    #endregion
 }

@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Recipe-Component" class="recipe-component recipe-component--inactive">
+        <ui:VisualElement name="Recipe-Component-Icon" class="recipe-component-icon" />
+        <ui:Label tabindex="-1" text="Iron" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Component-Name" class="recipe-component-name" />
+    </ui:VisualElement>
+</ui:UXML>

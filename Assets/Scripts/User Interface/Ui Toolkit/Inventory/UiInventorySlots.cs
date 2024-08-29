@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UiInventorySlots
@@ -21,7 +20,7 @@ public class UiInventorySlots
         slotsContainer.RegisterCallback<WheelEvent>(EnableSlotsWindowScroll);
 
         inventoryController.AssignedInventory.OnInventoryChange += RenderSlots;
-        inventoryController.OnInventoryControllerDisable += HandleInventoryControllerDisable;
+        inventoryController.OnWindowDisable += HandleInventoryControllerDisable;
     }
 
     private void HandleInventoryControllerDisable()
@@ -29,7 +28,7 @@ public class UiInventorySlots
         slotsContainer.UnregisterCallback<WheelEvent>(EnableSlotsWindowScroll);
 
         inventoryController.AssignedInventory.OnInventoryChange -= RenderSlots;
-        inventoryController.OnInventoryControllerDisable -= HandleInventoryControllerDisable;
+        inventoryController.OnWindowDisable -= HandleInventoryControllerDisable;
     }
 
     private void RenderSlots()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1826.0618, g: 1838.2971, b: 2523.8752, a: 1}
+  m_IndirectSpecularColor: {r: 1826.3645, g: 1838.3479, b: 2523.7542, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -436,8 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRoot: {fileID: 261985885}
   uiDocument: {fileID: 261985887}
-  <InventorySlotTemplate>k__BackingField: {fileID: 9197481963319205126, guid: a28be1f6f7816604eafa83f50917888c,
-    type: 3}
   <OnCloseButtonClick>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -453,6 +451,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <InventorySlotTemplate>k__BackingField: {fileID: 9197481963319205126, guid: a28be1f6f7816604eafa83f50917888c,
+    type: 3}
   <OnItemDropButtonClick>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -470,7 +470,19 @@ MonoBehaviour:
         m_CallState: 2
   <OnItemCraftButtonClick>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1854540364}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: PrepareCrafting
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &327295879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,13 +822,14 @@ GameObject:
   m_Component:
   - component: {fileID: 884562663}
   - component: {fileID: 884562664}
+  - component: {fileID: 884562665}
   m_Layer: 0
   m_Name: Craft Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &884562663
 Transform:
   m_ObjectHideFlags: 0
@@ -849,6 +862,39 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: b3b5550c74ce0464c87abedb56d642b9,
     type: 3}
   m_SortingOrder: 5
+--- !u!114 &884562665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884562662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d660975092518428485c0707386690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowRoot: {fileID: 884562662}
+  uiDocument: {fileID: 884562664}
+  <OnCloseButtonClick>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1854540364}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: CancelCrafting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <RecipeTemplate>k__BackingField: {fileID: 9197481963319205126, guid: 50d31d8d5117f334c9e076e2d71592ae,
+    type: 3}
+  <RecipeComponentTemplate>k__BackingField: {fileID: 9197481963319205126, guid: 9916e33d84d9e7b4598d8de2329952d0,
+    type: 3}
 --- !u!1 &931335601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2052,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 336424556116738232}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854540364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5676014799909215678, guid: 533945e128470eb4dbb628954b4114c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2960001999385749216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3b5c3a2bbf2f548a64d755882711e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1926546407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8525207968332967764, guid: 4f01020c06fae014eb78280dc8d5d662,
@@ -2060,6 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryController: {fileID: 261985888}
+  craftingController: {fileID: 884562665}
 --- !u!4 &2012029175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8525207968332967764, guid: 4f01020c06fae014eb78280dc8d5d662,
@@ -2326,26 +2385,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 595883789725005976, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99934006
-      objectReference: {fileID: 0}
-    - target: {fileID: 595883789725005976, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.03632495
-      objectReference: {fileID: 0}
-    - target: {fileID: 595883789725005976, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1e-45
-      objectReference: {fileID: 0}
-    - target: {fileID: 595883789725005976, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 1519671187585243181, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_Name
@@ -2361,21 +2400,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1823688466}
-    - target: {fileID: 3437024071233438123, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3437024071233438123, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 3437024071233438123, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3901895156044186298, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2426,60 +2450,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 1e-45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6326649791678420333, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9998346
-      objectReference: {fileID: 0}
-    - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.018189488
-      objectReference: {fileID: 0}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017203536
+      value: -0.000000017203536
       objectReference: {fileID: 0}
     - target: {fileID: 7670178674351723839, guid: 533945e128470eb4dbb628954b4114c2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 3.1297526e-10
+      value: -3.1297526e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

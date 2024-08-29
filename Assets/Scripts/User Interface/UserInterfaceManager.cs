@@ -10,6 +10,7 @@ public class UserInterfaceManager : MonoBehaviour
     public event Action OnLastWindowClose;
 
     [SerializeField] private UiInventoryController inventoryController;
+    [SerializeField] private UiCraftingController craftingController;
 
     private List<UiWindow> openWindows = new();
 
@@ -21,11 +22,13 @@ public class UserInterfaceManager : MonoBehaviour
     private void Start()
     {
         InitializeInventoryUi();
+        InitializeCraftingUi();
     }
 
     private void OnDestroy()
     {
         DeinitializeInventoryUi();
+        DeinitializeCraftingUi();
     }
 
     #region Open / Close window
@@ -82,6 +85,36 @@ public class UserInterfaceManager : MonoBehaviour
     private void HideInventoryUi()
     {
         TryCloseWindow(inventoryController);
+    }
+    #endregion
+
+    #region Crafting Ui
+    private void InitializeCraftingUi()
+    {
+        PlayerCrafting.Instance.OnPrepareCrafting += PrepareCraftingUi;
+        PlayerCrafting.Instance.OnCancelCrafting += HideCraftingUi;
+    }
+
+    private void DeinitializeCraftingUi()
+    {
+        PlayerCrafting.Instance.OnPrepareCrafting -= PrepareCraftingUi;
+        PlayerCrafting.Instance.OnCancelCrafting -= HideCraftingUi;
+    }
+
+    private void PrepareCraftingUi(InventoryItem mainRequiredItem)
+    {
+        OpenCraftingUi();
+        craftingController.SetMainRequiredItem(mainRequiredItem);
+    }
+
+    private void OpenCraftingUi()
+    {
+        TryOpenWindow(craftingController);
+    }
+
+    private void HideCraftingUi()
+    {
+        TryCloseWindow(craftingController);
     }
     #endregion
 }

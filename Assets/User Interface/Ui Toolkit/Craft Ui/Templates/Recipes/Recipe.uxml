@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Recipe" class="recipe">
+        <ui:VisualElement name="Recipe-Data" class="recipe-data">
+            <ui:VisualElement name="Recipe-Icon" class="recipe-icon" />
+            <ui:VisualElement name="Recipe-Data-Data" class="recipe-data-data">
+                <ui:Label tabindex="-1" text="Stone Axe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Title" class="recipe-title" />
+                <ui:Label tabindex="-1" text="Craft chance: 60%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Description" class="recipe-description" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Recipe-Components" class="recipe-components" />
+    </ui:VisualElement>
+</ui:UXML>

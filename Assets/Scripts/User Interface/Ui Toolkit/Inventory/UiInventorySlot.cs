@@ -28,14 +28,14 @@ public class UiInventorySlot
         InitializeData();
         InitializeButtons();
 
-        inventoryController.OnInventoryControllerDisable += HandleItemControllerDisable;
+        inventoryController.OnWindowDisable += HandleItemControllerDisable;
     }
 
     private void HandleItemControllerDisable()
     {
         DeinitializeButtons();
 
-        inventoryController.OnInventoryControllerDisable -= HandleItemControllerDisable;
+        inventoryController.OnWindowDisable -= HandleItemControllerDisable;
     }
 
     private void RenderSlot(VisualElement slotsContainer)
