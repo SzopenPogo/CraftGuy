@@ -2,12 +2,12 @@ using UnityEngine.UIElements;
 
 public class UiHeaderCloseButton
 {
-    private UiToolkitWindow inventoryController;
+    private UiToolkitWindow toolkitWindow;
     private Button closeButton;
 
     public UiHeaderCloseButton(UiToolkitWindow toolkitWindow)
     {
-        this.inventoryController = toolkitWindow;
+        this.toolkitWindow = toolkitWindow;
 
         closeButton = toolkitWindow.Root.Q<Button>("Header-Close-Button");
         closeButton.RegisterCallback<ClickEvent>(CloseButtonClick);
@@ -19,11 +19,11 @@ public class UiHeaderCloseButton
     {
         closeButton.UnregisterCallback<ClickEvent>(CloseButtonClick);
 
-        inventoryController.OnWindowDisable -= HandleInventoryDisable;
+        toolkitWindow.OnWindowDisable -= HandleInventoryDisable;
     }
 
     private void CloseButtonClick(ClickEvent e)
     {
-        inventoryController.DispatchCloseButtonClick();
+        toolkitWindow.DispatchCloseButtonClick();
     }
 }

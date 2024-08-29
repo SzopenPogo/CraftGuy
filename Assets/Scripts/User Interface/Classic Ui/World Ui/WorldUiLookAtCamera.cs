@@ -9,13 +9,11 @@ public class WorldUiLookAtCamera : MonoBehaviour
 
     private Coroutine refreshUiCoroutine;
 
-    private void Start()
-    {
-        mainCamera = Camera.main;
-    }
-
     private void OnEnable()
     {
+        mainCamera = Camera.main;
+
+        LookAtCamera();
         StartRefreshUiCoroutine();
     }
 
@@ -47,7 +45,12 @@ public class WorldUiLookAtCamera : MonoBehaviour
         {
             yield return new WaitForSeconds(refreshUiTime);
 
-            transform.LookAt(transform.position + mainCamera.transform.forward);
+            LookAtCamera();
         }
+    }
+
+    private void LookAtCamera()
+    {
+        transform.LookAt(transform.position + mainCamera.transform.forward);
     }
 }

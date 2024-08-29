@@ -11,6 +11,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     [SerializeField] private UiInventoryController inventoryController;
     [SerializeField] private UiCraftingController craftingController;
+    [SerializeField] private UiWelcomeController welcomeController;
 
     private List<UiWindow> openWindows = new();
 
@@ -23,12 +24,14 @@ public class UserInterfaceManager : MonoBehaviour
     {
         InitializeInventoryUi();
         InitializeCraftingUi();
+        InitializeWelcomeUi();
     }
 
     private void OnDestroy()
     {
         DeinitializeInventoryUi();
         DeinitializeCraftingUi();
+        DeinitializeWelcomeUi();
     }
 
     #region Open / Close window
@@ -116,6 +119,29 @@ public class UserInterfaceManager : MonoBehaviour
     private void HideCraftingUi()
     {
         TryCloseWindow(craftingController);
+    }
+    #endregion
+
+    #region Welcome Ui
+    private void InitializeWelcomeUi()
+    {
+        WelcomeInfo.Instance.OnInitialized += ShowWelcomeUi;
+        WelcomeInfo.Instance.OnDeinitialized += HideWelcomeUi;
+    }
+    private void DeinitializeWelcomeUi()
+    {
+        WelcomeInfo.Instance.OnInitialized -= ShowWelcomeUi;
+        WelcomeInfo.Instance.OnDeinitialized -= HideWelcomeUi;
+    }
+
+    private void ShowWelcomeUi()
+    {
+        TryOpenWindow(welcomeController);
+    }
+
+    private void HideWelcomeUi()
+    {
+        TryCloseWindow(welcomeController);
     }
     #endregion
 }
