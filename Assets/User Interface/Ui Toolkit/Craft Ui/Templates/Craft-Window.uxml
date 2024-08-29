@@ -12,21 +12,56 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Craft-Container" class="craft-contianer">
-            <ui:VisualElement name="Resources" class="resources">
-                <ui:VisualElement name="First-Resource" class="resource">
-                    <ui:VisualElement name="Icon" class="resource-icon" />
-                    <ui:Label tabindex="-1" text="Stone Axe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" class="resource-name" />
-                </ui:VisualElement>
-                <ui:VisualElement name="Second-Resource" class="resource">
+            <ui:VisualElement name="Craft-Item-Container" class="craft-item-container">
+                <ui:VisualElement name="Craft-Item" class="craft-item">
                     <ui:VisualElement name="Icon" class="resource-icon" />
                     <ui:Label tabindex="-1" text="Stone Axe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" class="resource-name" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Crafting..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Crafting-Status" class="crafting-status" />
+            <ui:Button text="Craft" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Craft-Button" class="craft-button" />
         </ui:VisualElement>
         <ui:VisualElement name="Recipes-Container" class="recipes-container" style="height: 400px;">
             <ui:Label tabindex="-1" text="Recipes" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipes-TItle" class="recipes-title" />
             <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Recipes" class="recipes">
-                <ui:VisualElement name="Recipe" class="recipe" />
+                <ui:VisualElement name="Recipe" class="recipe">
+                    <ui:VisualElement name="Recipe-Data" class="recipe-data">
+                        <ui:VisualElement name="Recipe-Icon" class="recipe-icon" />
+                        <ui:VisualElement name="Recipe-Data-Data" class="recipe-data-data">
+                            <ui:Label tabindex="-1" text="Stone Axe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Title" class="recipe-title" />
+                            <ui:Label tabindex="-1" text="Craft chance: 60%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Description" class="recipe-description" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Recipe-Components" class="recipe-components">
+                        <ui:VisualElement name="Recipe-Component" class="recipe-component recipe-component--inactive">
+                            <ui:VisualElement name="Recipe-Component-Icon" class="recipe-component-icon" />
+                            <ui:Label tabindex="-1" text="Iron" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Component-Name" class="recipe-component-name" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Recipe-Component" class="recipe-component">
+                            <ui:VisualElement name="Recipe-Component-Icon" class="recipe-component-icon" />
+                            <ui:Label tabindex="-1" text="Iron" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Component-Name" class="recipe-component-name" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Recipe" class="recipe recipe--selected">
+                    <ui:VisualElement name="Recipe-Data" class="recipe-data">
+                        <ui:VisualElement name="Recipe-Icon" class="recipe-icon" />
+                        <ui:VisualElement name="Recipe-Data-Data" class="recipe-data-data">
+                            <ui:Label tabindex="-1" text="Stone Axe" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Title" class="recipe-title" />
+                            <ui:Label tabindex="-1" text="Craft chance: 60%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Description" class="recipe-description" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Recipe-Components" class="recipe-components">
+                        <ui:VisualElement name="Recipe-Component" class="recipe-component recipe-component--inactive">
+                            <ui:VisualElement name="Recipe-Component-Icon" class="recipe-component-icon" />
+                            <ui:Label tabindex="-1" text="Iron" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Component-Name" class="recipe-component-name" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Recipe-Component" class="recipe-component">
+                            <ui:VisualElement name="Recipe-Component-Icon" class="recipe-component-icon" />
+                            <ui:Label tabindex="-1" text="Iron" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Recipe-Component-Name" class="recipe-component-name" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:ScrollView>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -515,7 +515,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 66a37f2b3a4fca84889648e0a5498abc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1107,7 +1107,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   raycastDistance: 9
-  testItem: {fileID: 11400000, guid: 1a853438e8f37be418caf1826d96a09d, type: 2}
 --- !u!1 &4247963960757855160
 GameObject:
   m_ObjectHideFlags: 3
