@@ -4,10 +4,12 @@ using UnityEngine.UIElements;
 
 public class UiInventoryController : UiToolkitWindow
 {
-    public Inventory AssignedInventory { get; private set; }
-
     [field: Header("Templates")]
     [field: SerializeField] public VisualTreeAsset InventorySlotTemplate { get; private set; }
+
+    [field: Header("Assigned Systems")]
+    [field: SerializeField] public Inventory AssignedInventory { get; private set; }
+    [field: SerializeField] public ItemDropper AssignedItemDropper { get; private set; }
 
     [field: Header("Item Buttons Events")]
     [field: SerializeField] public UnityEvent<InventoryItem> OnItemDropButtonClick { get; private set; }
@@ -17,8 +19,6 @@ public class UiInventoryController : UiToolkitWindow
     protected override void ApplyOnEnable()
     {
         base.ApplyOnEnable();
-
-        AssignedInventory = PlayerInventory.Instance;
 
         UiHeaderCloseButton closeButton = new(this);
         UiInventorySlots inventorySlots = new(this);

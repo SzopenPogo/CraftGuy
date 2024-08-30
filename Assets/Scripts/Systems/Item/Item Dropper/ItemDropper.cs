@@ -1,17 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemDropper : MonoBehaviour
 {
     public event Action<InventoryItem> OnDropIntemStarted;
-
+    public event Action OnStartDropItemEnabled;
+    public event Action OnStartDropItemDisabled;
+    
     [Header("Transforms")]
     [SerializeField] private Transform detectDropPositionRayOrigin;
     [SerializeField] private Transform rootTransform;
+    [SerializeField] private Transform itemsContainer;
 
     [Header("Ray Settings")]
     [SerializeField] private LayerMask ignoredLayers;
     [SerializeField] private float raycastDistance;
+
+    public bool IsStartDropItemsEnable { get; private set; }
 
     private void OnDrawGizmos()
     {
@@ -24,14 +30,35 @@ public class ItemDropper : MonoBehaviour
         Gizmos.DrawRay(detectDropPositionRayOrigin.position, rayDirection);
     }
 
+    public void EnableStartDropItems()
+    {
+        if (IsStartDropItemsEnable)
+            return;
+
+        OnStartDropItemEnabled?.Invoke();
+        IsStartDropItemsEnable = true;
+    }
+
+    public void DisableStartDropItems()
+    {
+        if (!IsStartDropItemsEnable)
+            return;
+
+        OnStartDropItemDisabled?.Invoke();
+        IsStartDropItemsEnable = false;
+    }
+
     public void StartDropItem(InventoryItem item)
     {
+        if (!IsStartDropItemsEnable)
+            return;
+
         OnDropIntemStarted?.Invoke(item);
     }
 
     public void DropItem(ItemData item)
     {
-        GameObject droppedItem = Instantiate(item.ItemPickupPrefab);
+        GameObject droppedItem = Instantiate(item.ItemPickupPrefab, itemsContainer);
 
 
         if (Physics.Raycast(detectDropPositionRayOrigin.position, detectDropPositionRayOrigin.forward, 
